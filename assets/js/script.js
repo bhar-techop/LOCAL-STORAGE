@@ -33,37 +33,26 @@ if (localStorage.length === 0) {
 // READ ALL THE VALUE
 for (let index = 0; index < localStorage.length; index++) {
   const key = localStorage.key(index);
+  //localStorage.key(index);-->localStorage.key(position(index))
   const value = localStorage.getItem(key);
-
+//localStorage.getItem(key);-->to get data
   document.getElementById(
     "lsOutput"
   ).innerHTML += `<br><hr><br> Key is : ${key} <br> Value is : ${value} <br> <br>`;
 }
+//DELETE ALL DATA
+document.getElementById("btnAllDelete").onclick=function(){
+    localStorage.clear();
+    location.reload()
+}
 
-// DELETE ALL DATA
-document.getElementById("btnAllDelete").onclick = function () {
-  localStorage.clear();
-  location.reload();
-};
-
-// READ SINGLE VALUE
-document.getElementById("btnReadData").onclick = function () {
-  const inputReadDataKeyNew = document.getElementById("inputReadDataKey").value;
-
-  const readedData = localStorage.getItem(inputReadDataKeyNew);
-
-  if (inputReadDataKeyNew) {
-    document.getElementById(
-      "readedDataHere"
-    ).innerHTML = `Data Value of requested KEY is : ${readedData}`;
-  }
-};
-
-//DELETE SINGLE DATA
-document.getElementById("btnDelete").onclick = function () {
-  const keyName = document.getElementById("inputDelKey").value;
-  if (keyName) {
-    localStorage.removeItem(keyName);
-    location.reload();
-  }
-};
+//READ SINGLE VALUE
+document.getElementById("btnReadData").onclick=function(){
+    const inputReadDataKeyNew=document.getElementById("inputReadDataKey").value;
+    const readedData=localStorage.getItem(inputReadDataKeyNew)
+    if(inputReadDataKeyNew){
+        document.getElementById(
+            "readedDataHere"
+        ).innerHTML=`Data Value of requested KEY is : ${readedData}`
+    }
+}
